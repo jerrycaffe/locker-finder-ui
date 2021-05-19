@@ -1,38 +1,41 @@
-.App {
-  text-align: center;
-}
+*,
+*::after,
+*::before {
+  margin: 0; }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+html {
+  font-size: 62.5%; }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+body {
+  box-sizing: border-box; }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(33, 37, 32, 0.5), rgba(36, 39, 38, 0.5)), url(./img/bg-hub-locker.jpg);
+  background-size: cover;
+  position: relative;
+  background-position: top; }
+
+li {
+  list-style: none; }
+
+.btn-text {
+  font-size: 1.6rem;
+  text-decoration: none;
+  padding: 2rem;
+  color: #000;
+  font-weight: 440; }
+
+.logo__icon {
+  width: 2rem;
+  height: 4rem; }
+
+.navigation {
+  background-color: #a08a0a;
+  height: 6rem;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+  justify-content: space-around;
+  align-items: center; }
+  .navigation ul {
+    display: flex; }
