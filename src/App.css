@@ -79,7 +79,7 @@ li {
 
 .header__search_block {
   background-color: #ec5021;
-  padding: 1.5rem 2rem 0 2rem;
+  padding: 1.5rem 3rem 0 3rem;
   height: 80%; }
 
 .header__form {
@@ -91,7 +91,7 @@ li {
   justify-content: space-between; }
 
 .header__footer {
-  background-color: #a8c2c782;
+  background-color: #cccccc;
   height: 5rem;
   width: 100%;
   display: flex;
@@ -130,7 +130,7 @@ li {
     padding: 1.6rem; }
   .main__table .tr-body {
     border-bottom: 1rem solid #fff;
-    background-color: #a8c2c782; }
+    background-color: #cccccc; }
 
 .main__left-pane .main__left-locker-img {
   width: 20rem; }
