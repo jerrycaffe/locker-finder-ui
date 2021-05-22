@@ -1,8 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logoIcon from "../img/random-icon.jpg";
 import ratingImg from "../img/hub-lock.jpeg";
+import axios from "axios";
+import SelectBtn from "../components/SelectBTN";
+import { Link } from "react-router-dom";
 
-const index = () => {
+const Index = ({ history }) => {
+  const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const callHubLocker = async () => {
+    console.log(search);
+    if (search.trim() === "") {
+      try {
+        const { data } = await axios.get("http://localhost:8080/api/v1/locker");
+        setData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+  const handleSearchLocker = async ({ target }) => {
+    try {
+      const { value } = target;
+      setSearch(value);
+      const { data } = await axios.get(
+        `http://localhost:8080/api/v1/locker/search?value=${value}`
+      );
+
+      setData(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    callHubLocker();
+  }, [search]);
   return (
     <React.Fragment>
       <div className="container">
@@ -72,6 +105,7 @@ const index = () => {
                       type="text"
                       className="header__search_input"
                       placeholder="Enter City or State"
+                      onChange={handleSearchLocker}
                     />
                     <div className="header__search_block">
                       <div className="search_block_title font-medium font-light">
@@ -87,13 +121,20 @@ const index = () => {
             </header>
             <div className="header__footer">
               <div className="locker-status font-medium font-grey">
-                6 Open Lockers Available
+                {data.length !== 0
+                  ? `${data.length} Open Lockers Available`
+                  : "There is No Locker Available in this location"}
               </div>
               <div className="header__sorting">
-                <div className="header__footer__sort_title font-medium font-grey">
+                <div className="header__footer__sort_title font-medium font-grey pd-2">
                   Sort By
                 </div>
-                <div className="header_footer_sort_item">Channel</div>
+                <div className="header_footer_sort_item">
+                  <SelectBtn
+                    list={["Closest", "Lowest Price"]}
+                    name="Closest"
+                  />
+                </div>
               </div>
             </div>
           </section>
@@ -111,12 +152,11 @@ const index = () => {
               <div className="main__right-pane">
                 <div className="main__right-filter-section">
                   <div className="main__filter-by">
-                    Featured
-                    <ul>
-                      <li>Small</li>
-                      <li>Medium</li>
-                      <li>Large</li>
-                    </ul>
+                    {/* <div className="title">Featured</div> */}
+                    <SelectBtn
+                      list={["Small", "Medium", "Large"]}
+                      name="Featured"
+                    />
                   </div>
                   <div className="main__view">
                     <a href="#">View the Guide size by</a>{" "}
@@ -131,17 +171,24 @@ const index = () => {
                   </thead>
 
                   <tbody>
-                    <tr className="tr-body">
-                      <td>Name</td>
+                    {data.map((value, idx) => (
+                      <tr className="tr-body" key={idx}>
+                        <td>{value.name}</td>
 
-                      <td>Description</td>
+                        <td>{value.description}</td>
 
-                      <td>Talk</td>
+                        <td>{value.quantity} Available</td>
 
-                      <td>2 Available</td>
+                        <td>{value.state}</td>
 
-                      <td>Rent Now</td>
-                    </tr>
+                        <td>{value.city}</td>
+                        <td>
+                          <Link to="/rent-now" className="btn-primary">
+                            Rent Now
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -153,4 +200,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

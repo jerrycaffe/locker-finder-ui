@@ -11,6 +11,7 @@ html {
 
 body {
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 // -- Varables --
@@ -18,7 +19,7 @@ $color-black: #000;
 $color-white: #fff;
 $color-red: #ec5021;
 $color-dark-grey: rgb(92, 89, 89);
-$color-light-grey: #cccccc;
+$color-light-grey: #efefef;
 $bold-font: 2rem;
 .header {
   height: 50vh;
@@ -31,6 +32,19 @@ $bold-font: 2rem;
 
 li {
   list-style: none;
+}
+
+.pd-2 {
+  padding: 0 2rem;
+}
+
+.btn-primary {
+  text-decoration: none;
+  color: $color-white;
+  background: #10ac498f;
+  padding: 0.5rem 5rem;
+  font-size: 1.8rem;
+  border-radius: 0.6rem;
 }
 
 .btn-text {
@@ -74,10 +88,11 @@ li {
 }
 
 .header__search_input {
-  font-size: $bold-font;
+  font-size: 2.3rem;
   color: $color-dark-grey;
+  background-color: transparent;
   border: none;
-  #e0dcdc &:focus {
+  &:focus {
     outline: none;
   }
 }
@@ -108,7 +123,7 @@ li {
 }
 
 .header__form {
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.4);
   padding: 1rem 3rem;
   display: flex;
   width: 45%;
@@ -171,5 +186,139 @@ li {
 .main__left-pane {
   & .main__left-locker-img {
     width: 20rem;
+    height: 23rem;
   }
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.main__right-filter-section {
+  padding-bottom: 2rem;
+  margin-bottom: 4rem;
+  border-bottom: 1px solid #a08a0a;
+}
+
+// ---------------------------
+
+.select-container {
+  position: relative;
+}
+
+.center-table {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.center-table .center-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#select-box {
+  min-width: 320px;
+  max-width: 30%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 8em;
+  text-align: center;
+  background: #fff;
+}
+.faux-select {
+  font-size: 1.2rem;
+  font-weight: 500;
+  list-style-type: none;
+  padding: 0.4em 0;
+  background: #9a9a9a;
+  color: #3e3b3b;
+  text-align: left;
+  cursor: pointer;
+  width: 180px;
+  display: inline-block;
+  position: relative;
+}
+.faux-select li {
+  padding: 0;
+  text-indent: 1em;
+  position: relative;
+}
+.faux-select li .options {
+  display: block;
+  list-style-type: none;
+  padding: 0;
+  margin: 0.4em 0 0 0;
+  background: transparent;
+  position: absolute;
+  width: 100%;
+  max-height: 0px;
+  overflow: hidden;
+  top: 1.2em;
+  transition: all ease 0.25s;
+}
+
+.faux-select li .options li {
+  padding: 1em 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.faux-select li .options li:hover {
+  background: rgb(207, 207, 207);
+}
+
+.faux-select li .options li:last-of-type {
+  border-bottom: 0;
+}
+
+.faux-select li .options.open {
+  font-size: 1.2rem;
+  font-weight: 500;
+  background: #9a9a9a;
+  max-height: 100rem;
+}
+
+.faux-select:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-top: 0.8em solid $color-black;
+  position: absolute;
+  top: 0.5em;
+  right: 1em;
+  transition: all ease 0.25s;
+}
+.faux-select.open:before {
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-bottom: 0.8em solid $color-black;
+  border-top: 0;
+}
+
+.open {
+  background: #9a9a9a;
+  max-height: 1000%;
+  border-top: 3px solid transparent;
+}
+
+.rental-success {
+  font-size: 3rem;
+  color: brown;
+  text-align: center;
+  padding: 20rem 0 1rem 0;
+}
+.back-container {
+  width: 19rem;
+  margin: auto;
+  padding: 4rem 0;
+}
+
+.btn-back {
+  text-decoration: none;
+  background-color: #ad9a99;
+  font-size: 1.5rem;
+  padding: 1rem 3rem;
 }
